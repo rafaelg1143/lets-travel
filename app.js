@@ -12,7 +12,7 @@ let auth = require('./controllers/auth');
 
 app.set('view engine', 'ejs');
 
-mongoose.connect('mongodb://localhost/travels', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://vertex:<lunatic>@cluster0.pwg6u9c.mongodb.net/travels', {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(express.json());
 let imageStorage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'public/images'),
@@ -58,4 +58,5 @@ app.get('/login', (req, resp) => {
     }
 })
 
-app.listen(3000, () => console.log('Listening 3000...'));
+let port = process.env.PORT || 3000;
+app.listen(port, () => console.log( ` Listening ${port}... `));
